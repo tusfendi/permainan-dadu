@@ -104,8 +104,12 @@ func PlayGame(i int, play *list.List, len int) {
 				fmt.Sprint("#", player.PlayerOrder),
 			}
 		}
-		print("    Pemain # ", player.PlayerOrder, "(", player.Point, "): ", strings.Join(player.DiceResult, ", "))
-		println()
+		print("    Pemain # ", player.PlayerOrder, "(", player.Point, "): ")
+		if strings.Join(player.DiceResult, ", ") != "" {
+			println(strings.Join(player.DiceResult, ", "))
+		} else {
+			println("_ (Berhenti bermain karena tidak memiliki dadu)")
+		}
 		playerNow = playerNow.Next()
 	}
 	i++
@@ -113,33 +117,13 @@ func PlayGame(i int, play *list.List, len int) {
 		PlayGame(i, play, len)
 	} else {
 		fmt.Println("=========================================")
-		fmt.Print(" Game berakhir karena hanya pemain #", lost, " yang memiliki dadu.")
+		if lost == 0 {
+			fmt.Print(" Game berakhir karena semua pemain sudah tidak memiliki dadu")
+		} else {
+			fmt.Print(" Game berakhir karena hanya pemain #", lost, " yang memiliki dadu.")
+		}
 		fmt.Println()
 		fmt.Println(" Game dimenangkan oleh pemain ", strings.Join(winners, ", "), " karena memiliki poin lebih banyak dari pemain lainnya.")
 
 	}
 }
-
-// println(play.Len())
-
-// println("player : ", play.Front().Value.(*Player).PlayerOrder)
-// println("player : ", play.Front().Next().Value.(*Player).PlayerOrder)
-// // play.Front().Next().Value.(*Player).PlayerOrder = 200
-// println("player : ", play.Front().Next().Next().Value.(*Player).PlayerOrder)
-// if play.Front().Next().Next().Next() == nil {
-// 	println("koosoonggg balik ke 1 ya nak")
-// 	println("player : ", play.Front().Value.(*Player).PlayerOrder)
-// }
-// println(play.Front().Next().Value.(*Player).PlayerOrder)
-// println(play.Front().Next().Next().Value.(*Player).PlayerOrder)
-// println(play.Back().Value.(*Player).PlayerOrder)
-
-// playerNow := play.Front()
-// for i := 0; i < play.Len(); i++ {
-// 	// if i == 1 {
-// 	println("player : ", playerNow.Value.(*Player).PlayerOrder)
-// 	// } else {
-// 	// 	println("player : ", playerNow.Next().Value.(*Player).PlayerOrder)
-// 	// }
-// 	playerNow = playerNow.Next()
-// }
