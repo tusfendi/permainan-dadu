@@ -81,7 +81,7 @@ func PlayGame(i int, play *list.List, len int) {
 		}
 		playerNow = playerNow.Next()
 	}
-	// EVALUASI
+
 	println("Setelah evaluasi:")
 	playerNow = play.Front()
 	diceChecker := 0
@@ -111,6 +111,7 @@ func PlayGame(i int, play *list.List, len int) {
 		}
 		playerNow = playerNow.Next()
 	}
+
 	i++
 	if diceChecker > 1 {
 		PlayGame(i, play, len)
@@ -123,6 +124,5 @@ func PlayGame(i int, play *list.List, len int) {
 		}
 		fmt.Println()
 		fmt.Println(" Game dimenangkan oleh pemain ", strings.Join(winners, ", "), " karena memiliki poin lebih banyak dari pemain lainnya.")
-
 	}
 }
