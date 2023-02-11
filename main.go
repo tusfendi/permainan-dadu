@@ -61,7 +61,6 @@ func PlayGame(i int, play *list.List, len int) {
 				if checkNextPlayer == nil {
 					checkNextPlayer = play.Front()
 				}
-				// 1 masih belum masuk di nextnya yaa
 				nextPlayer := checkNextPlayer.Value.(*Player)
 				nextPlayer.DiceResult = append(nextPlayer.DiceResult, "1")
 				nextPlayer.Dice++
